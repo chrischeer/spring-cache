@@ -1,0 +1,7 @@
+{
+  "timestamp": "2020-03-17T02:32:28.435+0000",
+  "status": 500,
+  "error": "Internal Server Error",
+  "message": "Unable to connect to Redis; nested exception is io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379",
+  "path": "/test-cache"
+}

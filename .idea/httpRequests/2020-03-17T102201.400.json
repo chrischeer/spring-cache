@@ -1,0 +1,7 @@
+{
+  "timestamp": "2020-03-17T02:22:01.703+0000",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Required int parameter 'id' is not present",
+  "path": "/test-cache"
+}

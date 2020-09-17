@@ -1,0 +1,67 @@
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110521.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110511.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110332.500.json
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110325.500.json
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110319.500.json
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110312.500.json
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110231.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110225.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110119.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T110114.200.txt
+
+###
+
+GET http://localhost:8889/test-cache?id=1
+
+<> 2020-03-17T104054.200.txt
+
+###
+
+

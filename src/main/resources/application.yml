@@ -1,0 +1,85 @@
+#    spring.cache.cache-names= ＃应用程序启动创建缓存的名称，必须将所有注释为@Cacheable缓存name（或value）罗列在这里，否者：Cannot find cache named 'xxx' for Builder[xx] caches=[sysItem] | key='' | keyGenerator='' | cacheManager='' | cacheResolver='' | condition='' | unless='' | sync='false'
+#    #以下根据不同缓存技术选择配置
+#    spring.cache.ehcache.config= ＃EHCache的配置文件位置
+#    spring.caffeine.spec= ＃caffeine类型创建缓存的规范。查看CaffeineSpec了解更多关于规格格式的细节
+#    spring.cache.infinispan.config= ＃infinispan的配置文件位置
+#    spring.cache.jcache.config= ＃jcache配置文件位置
+#    spring.cache.jcache.provider= ＃当多个jcache实现类时，指定选择jcache的实现类
+server:
+  port: 8889
+  name: springboot缓存Demo
+spring:
+  cache:
+    #缓存的技术类型，可选 generic,ehcache,hazelcast,infinispan,jcache,redis,guava,simple,none
+    type: SIMPLE
+  application:
+    name: springboot-cache-demo
+  devtools:
+    livereload:
+      enabled: false #是否支持livereload
+      port: 35729
+    restart:
+      enabled: false #是否支持热部署
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    #基本属性
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    druid:
+      #配置初始化大小/最小/最大
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      #获取连接等待超时时间
+      max-wait: 60000
+      #间隔多久进行一次检测，检测需要关闭的空闲连接
+      time-between-eviction-runs-millis: 60000
+      #一个连接在池中最小生存的时间
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      #监控统计拦截的filters
+      filters: stat,wall
+      logSlowSql: true
+      #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20
+  servlet:
+    multipart:
+      max-file-size: 1MB #最大文件大小。值可以使用后缀“MB”或“KB”。指示兆字节或千字节大小。
+      max-request-size: 12MB # 最大请求大小可以是mb也可以是kb
+
+  #redis配置
+  redis:
+    database: 0 #  数据库索引
+    host: 127.0.0.1 #    服务器地址
+    port: 6379  #    服务器连接端口
+    #    password: 123456   #    密码
+    jedis:
+      pool: #    链接池
+        max-active: 8 #    最大连接数（负值表示没有限制）
+        max-wait: 1ms #      最大阻塞等待时间（负值表示没有限制）
+        max-idle: 8 #      最大空闲链接
+        min-idle: 0  #      最小空闲链接
+    timeout: 5000ms #    链接超时时间（毫秒）
+
+mybatis:
+  type-aliases-package: com.example.cache.model  # 注意：对应实体类的路径
+  mapper-locations: classpath*:com/example/cache/mapper/*/*.xml #对应mapper映射xml文件的所在路径
+  config-location: classpath:mybatis/mybatis-config.xml  #对应mybatis配置文件路径
+
+
+management: #暴露监控
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+
